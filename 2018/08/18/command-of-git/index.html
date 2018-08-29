@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="descriptwion"><meta name="keywords" content="Git, Java, Spring, 算法, Jinphy,"><title>Git命令整理 | 原始人</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Git命令整理</h1><a id="logo" href="/.">原始人</a><p class="description">搬砖使我快乐...</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="输入您要搜索的关键字"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">Git命令整理</h1><div class="post-meta"><a href="/2018/08/18/command-of-git/#comments" class="comment-count"></a><p><span class="date">Aug 18, 2018</span><span><a href="/categories/学习/" class="category">学习</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击数</i></i></span></p></div><div class="post-content"><!-- 资源链接 -->
+<!-- 概述 -->
+<p>这篇文章主要记录的是关于 <a href="http://git-scm.com" title="Git官网" target="_blank" rel="noopener">Git</a> 的一些常用的命令，当一些命令太久没有使用忘记时可以在这里重新学习！ 下载 <code>Git</code> 请点击<a href="https://git-scm.com/downloads" title="Git 下载地址" target="_blank" rel="noopener">这里</a></p>
+<a id="more"></a>
+<hr>
+<!-- ---------------------------------------  -->
+<!-- ------------正文内容--------------------- -->
+<!-- ---------------------------------------  -->
+<h3 id="查看版本号"><a href="#查看版本号" class="headerlink" title="查看版本号 "></a><strong><font color="[theme.color_title_3]">查看版本号</font> </strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git -version</span><br></pre></td></tr></table></figure>
+<!-- ---------------------------------------  -->
+<h3 id="查看用于名和邮箱"><a href="#查看用于名和邮箱" class="headerlink" title="查看用于名和邮箱"></a><strong><font color="[theme.color_title_3]">查看用于名和邮箱</font></strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name</span><br><span class="line">$ git config --global user.email</span><br></pre></td></tr></table></figure>
+<!-- ---------------------------------------  -->
+<h3 id="设置用户名和邮箱"><a href="#设置用户名和邮箱" class="headerlink" title="设置用户名和邮箱"></a><strong><font color="[theme.color_title_3]">设置用户名和邮箱</font></strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"Your name"</span></span><br><span class="line">$ git config --global user.email <span class="string">"your email address"</span></span><br></pre></td></tr></table></figure>
+<!-- ---------------------------------------  -->
+<h3 id="查看用户是否已经有-ssh-密钥"><a href="#查看用户是否已经有-ssh-密钥" class="headerlink" title="查看用户是否已经有 ssh 密钥"></a><strong><font color="[theme.color_title_3]">查看用户是否已经有 <code>ssh</code> 密钥</font></strong></h3><ul>
+<li><p>进入用户名录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看是否有 <code>.ssh</code> 目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果有<code>.ssh</code> 目录，并且确定不是自己生成的，则把该目录删掉</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm -rf .ssh</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<!-- ---------------------------------------  -->
+<h3 id="生成用户-ssh-密钥"><a href="#生成用户-ssh-密钥" class="headerlink" title="生成用户 ssh 密钥"></a><strong><font color="[theme.color_title_3]">生成用户 <code>ssh</code> 密钥</font></strong></h3><ul>
+<li><p>创建 <code>.ssh</code> 目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir .ssh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 <code>.ssh key</code>，输入以下命令，并一直按<strong><em>Enter</em></strong> 键，直到完成创建</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"Your email address"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看生成的 <code>.ssh</code> 目录的内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> .ssh</span><br><span class="line">$ ls</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<!-- ---------------------------------------  -->
+<h3 id="使用生成的-ssh-key"><a href="#使用生成的-ssh-key" class="headerlink" title="使用生成的 ssh key"></a><strong><font color="[theme.color_title_3]">使用生成的 <code>ssh key</code></font></strong></h3><ul>
+<li><p>在 <code>.ssh</code> 目录下，使用如下命令打开 <code>id_rsa.pub</code> 文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat id_rsa.pub</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制 <code>id_rsa.pub</code> 文件中的内容，将该公钥添加到代码托管平台中就可以使用 <a href="http://git-scm.com" title="Git官网" target="_blank" rel="noopener">Git</a>了。<br>常用的代码托管平台有国外的 <a href="https:github.com" target="_blank" rel="noopener">GitHub</a> 和国内的 <a href="https:gitee.com" target="_blank" rel="noopener">Gitee</a></p>
+<ol>
+<li><code>GitHub:</code> 是使用最为广泛的的远程代码托管平台之一，是国外的，但是一般情况下你的代码在上面都是公开的，谁都可以查看和下载，除非你向该平台定期缴纳费用</li>
+<li><code>Gitee:</code> 又叫 <strong>码云</strong> 是国内比较有名的远程代码托管平台之一，在该平台上你可以免费地设置你的代码是否公开或私有，如果你希望你的某些代码不被别人看到可以考虑使用该平台</li>
+</ol>
+</li>
+</ul>
+<!-- ---------------------------------------  -->
+<h3 id="创建本地代码仓库"><a href="#创建本地代码仓库" class="headerlink" title="创建本地代码仓库"></a><strong><font color="[theme.color_title_3]">创建本地代码仓库</font></strong></h3><ul>
+<li><p>打开终端，使用如下命令进入需要创建项目的目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> [target path]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建项目跟目录并进入建好的项目跟目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir [Project Name]</span><br><span class="line">$ <span class="built_in">cd</span> [Project Name]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看项目的绝对路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<!-- ---------------------------------------  -->
+<h3 id="从远程仓库中直接拉取（克隆）项目到本地"><a href="#从远程仓库中直接拉取（克隆）项目到本地" class="headerlink" title="从远程仓库中直接拉取（克隆）项目到本地"></a><strong><font color="[theme.color_title_3]">从远程仓库中直接拉取（克隆）项目到本地</font></strong></h3><ul>
+<li><p>直接克隆</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@github.com:Jinphy/GitHubProject.git （GitHub平台）</span><br><span class="line">或</span><br><span class="line">$ git <span class="built_in">clone</span> git@gitee.com:Jinphy/GiteeProject.git（Gitee平台）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>克隆到指定目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@github.com:Jinphy/gitHubProject.git [folder]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注：</strong> 以上只列举了 <code>GitHub</code> 和 <code>Gitee</code> 两个平台的远程仓库，其他远程仓库的用法于此类似</p>
+</blockquote>
+</li>
+</ul>
+<!-- ---------------------------------------  -->
+<h3 id="指令：remote"><a href="#指令：remote" class="headerlink" title="指令：remote "></a><strong><font color="[theme.color_title_3]">指令：<code>remote</code> </font></strong></h3><ul>
+<li><p>前提</p>
+<ul>
+<li>本地： 有一个项目叫 <code>GiteeProject</code></li>
+<li>远程： 在 <code>Gitee</code> 平台上有个个项目叫 <code>GiteeProject(http://gitee.com/JinphyGiteeProject)</code></li>
+</ul>
+</li>
+<li><p>关联本地仓库到远程</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add gitee git@gitee.com:Jinphy/GiteeProject.git</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注：</strong> </p>
+<ul>
+<li>上面中的 <code>gitee</code> 可以自己命名，它时远程仓库在本地中的一个名称，叫什么不会对远程仓库有任何影响</li>
+<li>如果远程仓库时 <code>GitHub</code> ，则上面的命令中的 <code>gitee.com</code> 可以改成 <code>github.com</code> </li>
+</ul>
+</blockquote>
+</li>
+<li><p>查看本地项目关联远程仓库的情况，将会显示所有关联的远程仓库及其读写权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">或</span><br><span class="line">$ git remote -verbose</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解除与某个远程仓库的关联</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote rm gitee</span><br><span class="line">或</span><br><span class="line">$ git remote remove gitee</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注：</strong> 上面的 <code>gitee</code> 是远程仓库在本地关联的名字</p>
+</blockquote>
+</li>
+<li><p>更改远程分支在本地中的名字</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote rename [old_name] [new_name]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注：</strong> 例如从远程仓库中 <code>clone</code> 下来的项目在本地的默认分支的名字是 <code>origin</code> ，现在如果这个远程仓库是<a href="https:github.com" target="_blank" rel="noopener">GitHub</a>上面的，则可以改成 <code>github</code>；如果是<a href="https:gitee.com" target="_blank" rel="noopener">Gitee</a>上面的，则可以改成 <code>gitee</code></p>
+</blockquote>
+</li>
+</ul>
+<!-- ---------------------------------------  -->
+<h3 id="指令：checkout"><a href="#指令：checkout" class="headerlink" title="指令：checkout"></a><strong><font color="[theme.color_title_3]">指令：<code>checkout</code></font></strong></h3><ul>
+<li><p>检出本地已有分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout [branch_name]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从当前分支中检出新的分支，并把 <code>HEAD</code> 指向该新分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b [new_branch_name]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从当前分支检出到新分支，并进行3路合并</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -m [branch_name]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注：</strong> 所谓<code>3路合并</code>就是将当前分支（修改前的）、当前分支（修改后但是还未提交的）以及新检出的分支进行合并，并将合并结果更新到新检出的分支中。值得注意的是，新检出的分支的提交状态与旧分支的提交状态一致（即如果旧分支是未提交的则新检出的分支也是未提交的），最后旧分支的状态将回到最后一次提交后（修改前）的状态</p>
+</blockquote>
+</li>
+<li><p>从当前分支检出新的分支，并放弃所有修改但未提交的内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -f [branch_name]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注：</strong> 执行该命令后，相当于放弃在之前分支修改但未提交的所有内容，旧分支的状态将回到最后一次提交后修改前的状态。</p>
+</blockquote>
+</li>
+</ul>
+<!-- ---------------------------------------  -->
+<h3 id="指令：branch"><a href="#指令：branch" class="headerlink" title="指令：branch"></a><strong><font color="[theme.color_title_3]">指令：<code>branch</code></font></strong></h3><ul>
+<li><p>查看本地分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branchr</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看远程分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -r</span><br><span class="line">或</span><br><span class="line">$ git branch --remoter</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看所有分支（本地、远程）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -a</span><br><span class="line">或</span><br><span class="line">$ git branch --all</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看分支，并带有最后一次提交的信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -v</span><br><span class="line">或</span><br><span class="line">$ git branch -verbose</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除已经完全合并后的分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注：</strong> 执行该命令只能删除完全合并后的分支，即只有在当前分支的所有修改提交都被合并到其他分支上之后才能删除，否则删除不成功，并提示你该分支的修改提交还没有被合并，所以该操作是安全的</p>
+</blockquote>
+</li>
+<li><p>强制删除指定分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -D</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注：</strong> 该指令执行后指定的分支将会被删除，即使该分支有修改提交未被合并到其他分支上，所以该指令要慎用，一般情况请使用上面一条指令</p>
+</blockquote>
+</li>
+</ul>
+<!-- ---------------------------------------  -->
+<h3 id="指令：add"><a href="#指令：add" class="headerlink" title="指令：add"></a><strong><font color="[theme.color_title_3]">指令：<code>add</code></font></strong></h3><ul>
+<li><p>将某个新增或修改后的文件添加到仓库索引中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add [file_name]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将所有新增或修改后的文件添加到索引中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注：</strong> <code>.</code> 是一个通配符，匹配所有文件，也可以根据需求只匹配一部分的文件。例如，将 <code>.</code> 换成 <code>*.s</code> 时，将匹配所有文件名以 <code>.s</code> 结尾的文件</p>
+</blockquote>
+</li>
+</ul>
+</div><div class="tags"><a href="/tags/Git/">Git</a></div><div class="post-share"></div><div class="post-nav"><a href="/2018/08/19/markkdown-skill/" class="pre">Markdown 使用整理</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看版本号"><span class="toc-text">查看版本号 </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看用于名和邮箱"><span class="toc-text">查看用于名和邮箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置用户名和邮箱"><span class="toc-text">设置用户名和邮箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看用户是否已经有-ssh-密钥"><span class="toc-text">查看用户是否已经有 ssh 密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成用户-ssh-密钥"><span class="toc-text">生成用户 ssh 密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用生成的-ssh-key"><span class="toc-text">使用生成的 ssh key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建本地代码仓库"><span class="toc-text">创建本地代码仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从远程仓库中直接拉取（克隆）项目到本地"><span class="toc-text">从远程仓库中直接拉取（克隆）项目到本地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#指令：remote"><span class="toc-text">指令：remote </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#指令：checkout"><span class="toc-text">指令：checkout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#指令：branch"><span class="toc-text">指令：branch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#指令：add"><span class="toc-text">指令：add</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/29/idea-problem/">IDEA 常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/29/algorithm-analyze/">常用算法分析 & 实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/22/idea-tutorial/">IDEA 破解永久免费教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/19/markkdown-skill/">Markdown 使用整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/command-of-git/">Git命令整理</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习/">学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/问题/">问题</a><span class="category-list-count">2</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/IDEA/" style="font-size: 15px;">IDEA</a> <a href="/tags/Mybatis/" style="font-size: 15px;">Mybatis</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li></ul></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">Jinphy.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script></body></html>
