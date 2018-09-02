@@ -5,6 +5,7 @@ pre {
   border: none;
   padding: 0;
   margin: 0;
+  scrollbar-base-color: #55a532;
 }
 pre code {
   display: block;
@@ -48,13 +49,14 @@ figure.highlight figcaption a,
 figure.highlight table,
 .codeblock table {
   width: 100%;
+  max-height: 400px;
   margin: 0;
   padding-bottom: 0px;
   border-radius: 5px;
   border-collapse: collapse;
   position: relative;
   display: block;
-  overflow-x: auto;
+  overflow: auto;
 }
 figure.highlight pre,
 .codeblock pre,
